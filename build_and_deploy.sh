@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd backend
-rm mashroom
+rm backend
 go test ./...
 go build -a -o backend main.go
 

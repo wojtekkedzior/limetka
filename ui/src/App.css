@@ -200,20 +200,14 @@ body {
   height: 50px;
 }
 
-#multiselectContainerReact {
+/* #multiselectContainerReact {
   width: 30%;
-  float:left
-}
+  float: left
+} */
 
 .sort-div {
   float: left;
   width: 100%
-}
-
-.table-buttons {
-  /* float: left; */
-  /* display: inline-block; */
-  /* width: 30% */
 }
 
 table { border-collapse:collapse; width:100%; }
