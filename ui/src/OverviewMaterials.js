@@ -141,6 +141,7 @@ class OverviewMaterials extends React.Component {
           <div className='filters-div'>
             <label style={{ float: 'left' }}>Filters</label>
             <Multiselect
+              id="multiSelect_overview"
               options={this.state.themes}
               selectedValues={this.state.selectedThemes}
               onSelect={(selectedList, selectedItem) => { this.setState({ selectedThemes: selectedList }, function () { this.filter(); }) }}
@@ -150,6 +151,7 @@ class OverviewMaterials extends React.Component {
             />
 
             <Multiselect
+            id="multiSelect_overview"
               options={this.state.types}
               selectedValues={this.state.selectedTypes}
               onSelect={(selectedList, selectedItem) => { this.setState({ selectedTypes: selectedList }, function () { this.filter(); }) }}
@@ -159,7 +161,7 @@ class OverviewMaterials extends React.Component {
             />
 
             <Multiselect
-              className='abc'
+              id="multiSelect_overview"
               options={this.state.colors}
               selectedValues={this.state.selectedColors}
               onSelect={(selectedList, selectedItem) => { this.setState({ selectedColors: selectedList }, function () { this.filter(); }) }}

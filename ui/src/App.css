@@ -75,6 +75,7 @@ body {
   display: inline-block;
   border-style: dashed;
   background-color: green;
+  width: 500px
 }
 
 .properties-divs {
@@ -204,6 +205,11 @@ body {
   width: 30%;
   float: left
 } */
+
+#multiSelect_overview {
+  width: 30%;
+  float: left
+}
 
 .sort-div {
   float: left;
