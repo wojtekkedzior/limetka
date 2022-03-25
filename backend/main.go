@@ -366,6 +366,41 @@ func getMaterial() http.HandlerFunc {
 	}
 }
 
+func deleteMaterial() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		id := r.URL.Query().Get("id")
+
+		output, err := s3Client.ListObjects(&s3.ListObjectsInput{Bucket: aws.String("limetka-storage"), Prefix: aws.String(id)})
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		for _, v := range output.Contents {
+			out, err := s3Client.DeleteObject(&s3.DeleteObjectInput{Bucket: aws.String("limetka-storage"), Key: aws.String(*v.Key)})
+
+			if err != nil {
+				fmt.Println(err)
+			}
+
+			fmt.Println(out)
+		}
+
+		_, err = svc.DeleteItem(&dynamodb.DeleteItemInput{Key: map[string]*dynamodb.AttributeValue{
+			"id": {
+				S: aws.String(id),
+			},
+		},
+			TableName: aws.String("inventory"),
+		})
+
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		w.WriteHeader(http.StatusOK)
+	}
+}
+
 func corsHandler(h http.Handler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		origin := r.Header.Get("Origin")
@@ -373,7 +408,7 @@ func corsHandler(h http.Handler) http.HandlerFunc {
 			w.Header().Add("Connection", "keep-alive")
 			w.Header().Add("Access-Control-Allow-Origin", origin)
 			w.Header().Add("Access-Control-Allow-Methods", "POST, OPTIONS, GET, DELETE, PUT")
-			w.Header().Add("Access-Control-Allow-Headers", "content-type")
+			w.Header().Add("Access-Control-Allow-Headers", "content-type, method")
 			w.Header().Add("Access-Control-Max-Age", "86400")
 		} else {
 			w.Header().Set("Content-Type", "application/json")
@@ -402,6 +437,8 @@ func main() {
 
 	http.HandleFunc("/saveMaterial", corsHandler(saveMaterial()))
 	http.HandleFunc("/getMaterial", corsHandler(getMaterial()))
+
+	http.HandleFunc("/deleteMaterial", corsHandler(deleteMaterial()))
 
 	if err := http.ListenAndServe(":3001", nil); err != nil {
 		os.Exit(123)

@@ -137,7 +137,6 @@ class Material extends React.Component {
   }
 
   titleBar(name) {
-    // console.log("TitleBar state", this.state)
     return (<div className="wrapper">
       <div className='name-div'>
         <label>{name}</label>
@@ -146,7 +145,6 @@ class Material extends React.Component {
       <div>
         {this.mode === "view" &&
           <>
-            {/* //todo this is borken */}
             <button type="button" onClick={event => window.location.href = '/material/edit/' + this.id}>Edit</button>
             <button type="button" onClick={() => this.back()}>Back</button>
           </>

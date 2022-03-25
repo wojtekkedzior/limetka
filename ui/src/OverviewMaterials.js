@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment'
 import Multiselect from 'multiselect-react-dropdown';
+import { confirm } from "react-confirm-box";
 
 class OverviewMaterials extends React.Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class OverviewMaterials extends React.Component {
     this.sort = this.sort.bind(this);
   }
 
-  
+
   componentDidMount() {
     fetch("http://localhost:3001/getConstants", {
       headers: {
@@ -62,7 +63,7 @@ class OverviewMaterials extends React.Component {
         (result) => {
           this.setState({
             isLoaded: true,
-            data: result,
+            data: result == null ? [] : result,
             cachedData: result
           });
           console.log(result);
@@ -71,6 +72,35 @@ class OverviewMaterials extends React.Component {
           this.setState({
             isLoaded: true,
             data: [],
+            error,
+          });
+        }
+      )
+  }
+
+  delete(id) {
+    fetch("http://localhost:3001/deleteMaterial?id=" + id, {
+      headers: {
+        'method': 'DELETE',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Request-Headers': 'http://localhost:3001'
+      }
+    }).then(response => response)
+      .then(
+        (result) => {
+          var filtered = this.state.cachedData.filter(function (material, index, arr) {
+            return material.id != id;
+          });
+
+          this.setState({
+            cachedData: filtered,
+            data: filtered,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
             error,
           });
         }
@@ -151,7 +181,7 @@ class OverviewMaterials extends React.Component {
             />
 
             <Multiselect
-            id="multiSelect_overview"
+              id="multiSelect_overview"
               options={this.state.types}
               selectedValues={this.state.selectedTypes}
               onSelect={(selectedList, selectedItem) => { this.setState({ selectedTypes: selectedList }, function () { this.filter(); }) }}
@@ -209,12 +239,12 @@ class OverviewMaterials extends React.Component {
         <table >
           <thead>
             <tr>
-              <th style={{width: '10%'}}>Thumbnail</th>
-              <th style={{width: '30%'}}>Name</th>
-              <th style={{width: '20%'}}>Type</th>
-              <th style={{width: '10%'}}>Size</th>
-              <th style={{width: '5%'}}>Cost</th>
-              <th style={{width: '20%'}}>Added</th>
+              <th style={{ width: '10%' }}>Thumbnail</th>
+              <th style={{ width: '30%' }}>Name</th>
+              <th style={{ width: '20%' }}>Type</th>
+              <th style={{ width: '10%' }}>Size</th>
+              <th style={{ width: '5%' }}>Cost</th>
+              <th style={{ width: '20%' }}>Added</th>
               <th></th>
             </tr>
           </thead>
@@ -223,32 +253,27 @@ class OverviewMaterials extends React.Component {
             {data.map((material =>
               <tr key={material.id}>
                 <td >
-                  <div  style={{marginLeft: '20px'}}>
+                  <div style={{ marginLeft: '20px' }}>
                     <img src={"data:image/png;base64," + material.thumbnail} alt="thumbnail"></img>
                   </div>
-                </td>  
+                </td>
                 <td>{material.name}</td>
                 <td>{material.materialType}</td>
                 <td>{`W: ${material.width} l: ${material.length}`}</td>
                 <td>{material.cost}</td>
                 <td> {material.addedOn}</td>
                 <td>
-                  <div style={{width: '90px'}}>
+                  <div style={{ width: '90px' }}>
                     <a href={`/material/view/${material.id}`} className="table-buttons">
                       <img src={'./view_icon.png'} width="30" height="30" alt="view"></img>
                     </a>
                     <a href={`/material/edit/${material.id}`} className="table-buttons">
                       <img src={'./edit_icon.png'} width="30" height="30" alt="edit"></img>
                     </a>
-                    <a href={`/material/delete/${material.id}`} className="table-buttons">
-                      <img src={'./delete_icon.jpeg'} width="30" height="30" alt="delete"></img>
-                    </a>
+                    <button onClick={async () => { const result = await confirm("Are you sure?"); if (result) { this.delete(material.id) } }}>
+                      <img src={'./delete_icon.jpeg'} width="20" height="20"></img></button>
                   </div>
                 </td>
-
-                {/* <td> <a href={`/material/view/${material.id}`}>{material.name}</a></td>
-              <td>{material.Unit}</td>
-              <input id="submit-new-period" type="button" value="delete" onClick={() => this.handleClick(material)} /> */}
               </tr>
             ))}
           </tbody>
