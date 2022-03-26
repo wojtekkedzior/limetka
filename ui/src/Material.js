@@ -172,6 +172,8 @@ class Material extends React.Component {
       return "Update Material"
     } else if (this.mode === "view") {
       return "Details"
+    } else if (this.mode === "add") {
+      return "New Material"
     } else {
       return "no idea"
     }
@@ -190,7 +192,7 @@ class Material extends React.Component {
     }
 
     const ImagePanel = () => (
-      <div className="App">
+      <div className='image-div'>
         <ImageUploading
           multiple
           value={this.state.rawpics}
@@ -207,7 +209,6 @@ class Material extends React.Component {
             isDragging,
             dragProps,
           }) => (
-            // write your building UI
             <div className="upload__image-wrapper">
               <button
                 style={isDragging ? { color: 'red' } : undefined}
@@ -343,15 +344,7 @@ class Material extends React.Component {
           </div>
         </div>
 
-        <div className='image-div'>
-          {/* <h2>Images</h2>
-          <div className='photo-div'>
-            <img src={"data:image/png;base64," + this.state.thumbnail} alt="" width="100" />
-          </div> */}
-          <div className='photo-controls-div'>
-            <ImagePanel />
-          </div>
-        </div>
+        <ImagePanel />
       </div>
     )
   }

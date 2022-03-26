@@ -26,7 +26,6 @@ class OverviewMaterials extends React.Component {
     this.sort = this.sort.bind(this);
   }
 
-
   componentDidMount() {
     fetch("http://localhost:3001/getConstants", {
       headers: {
