@@ -86,8 +86,7 @@ body {
   margin-right: 50px;
   margin-left: 50px;
   display: inline-block;
-  border-style: solid;
-  border-color: lime;
+  border: 1px solid #B4B725;
   border-radius: 10px;
   background-color:  white;
 }
