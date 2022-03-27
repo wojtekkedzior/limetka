@@ -39,7 +39,10 @@ body {
 }
 
  .topbar-div {
-  background-color: blue; 
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  margin: 0px 20px 0px 20px;
+  background-color:  white;
 } 
 
 #units-div {
@@ -50,13 +53,30 @@ body {
 }
 
 .properties-divs {
-  width: 50%;
+  width: calc(50% - 32px);
   display: inline-block;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  margin: 20px 20px 20px 20px;
+  background-color:  white;
 }
 
 .image-div {
-  width: 50%;
+  width: calc(50% - 32px);
   display: inline-block;
+  margin: 20px;
+  background-color:  white;
+  margin: 20px 20px 20px 0px;
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+}
+
+.costs-divs {
+  width: calc(50% - 32px);
+  border: 1px solid #C4C4C4;
+  border-radius: 8px;
+  margin: 0px 20px 0px 20px;
+  background-color:  white;
 }
 
 .home-page-divs {
@@ -69,6 +89,7 @@ body {
   border-style: solid;
   border-color: lime;
   border-radius: 10px;
+  background-color:  white;
 }
 
 .header {
@@ -95,12 +116,16 @@ body {
 }
 
 .content {
-  border: solid #C4C4C4 1px;
-  border-radius: 4px;
-  background-color: white;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin: 50px;
+  margin: 20px 50px 20px 50px;
+}
+
+.overview-content {
+   border: 1px solid #C4C4C4; 
+   border-radius: 4px;
+   background-color:  white;
+   margin: 20px 50px 20px 50px;
 }
 
 .heading-text {
@@ -150,7 +175,11 @@ body {
 
 .filters {
   border: solid #A2A521;
-  height: 75px
+  height: 75px;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+
 }
 
 .filters-div {
@@ -167,6 +196,6 @@ body {
   width: 100%
 }
 
-table { border-collapse:collapse; width:100%; }
+table { border-collapse:collapse; width:calc(100% - 20px); padding: 10px; margin: 10px}
 table tbody td { border-bottom: 1px solid #000; text-align: left;}
 table thead th { border-bottom: 1px solid #000; text-align: left;}

@@ -230,9 +230,8 @@ class OverviewMaterials extends React.Component {
       return <div>Loading...</div>;
     }
     return (
-      <div className='content'>
+      <div className='overview-content'>
         <TitleBar></TitleBar>
-
         <FilterBar></FilterBar>
 
         <table >
