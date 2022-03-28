@@ -192,48 +192,46 @@ class Material extends React.Component {
     }
 
     const ImagePanel = () => (
-      <div className='image-div'>
-        <ImageUploading
-          multiple
-          value={this.state.rawpics}
-          onChange={(imageList, addUpdateIndex) => { this.setState({ rawpics: imageList }) }}
-          maxNumber={this.state.maxNumber}
-          dataURLKey="data_url"
-        >
-          {({
-            imageList,
-            onImageUpload,
-            onImageRemoveAll,
-            onImageUpdate,
-            onImageRemove,
-            isDragging,
-            dragProps,
-          }) => (
-            <div className="upload__image-wrapper">
-              <button
-                style={isDragging ? { color: 'red' } : undefined}
-                onClick={onImageUpload}
-                disabled={this.disabled()}
-                {...dragProps}
-              >
-                Click or Drop here
-              </button>
-              &nbsp;
-              <button onClick={onImageRemoveAll} disabled={this.disabled()}>Remove all images</button>
-              {imageList.map((image, index) => (
-                <div key={index} className="image-item">
-                  <img src={image['data_url']} alt="" width="100" />
-                  <div className="image-item__btn-wrapper">
+      <ImageUploading
+        multiple
+        value={this.state.rawpics}
+        onChange={(imageList, addUpdateIndex) => { this.setState({ rawpics: imageList }) }}
+        maxNumber={this.state.maxNumber}
+        dataURLKey="data_url"
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemoveAll,
+          onImageUpdate,
+          onImageRemove,
+          isDragging,
+          dragProps,
+        }) => (
+          <div className="upload__image-wrapper">
+            <button
+              style={isDragging ? { color: 'red' } : undefined}
+              onClick={onImageUpload}
+              disabled={this.disabled()}
+              {...dragProps}
+            >
+              Click or Drop here
+            </button>
+            &nbsp;
+            <button onClick={onImageRemoveAll} disabled={this.disabled()}>Remove all images</button>
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item">
+                <img src={image['data_url']} alt="" width="100" />
+                <div className="image-item__btn-wrapper">
 
-                    <button onClick={() => onImageUpdate(index)} disabled={this.disabled()}>Update</button>
-                    <button onClick={() => onImageRemove(index)} disabled={this.disabled()}>Remove</button>
-                  </div>
+                  <button onClick={() => onImageUpdate(index)} disabled={this.disabled()}>Update</button>
+                  <button onClick={() => onImageRemove(index)} disabled={this.disabled()}>Remove</button>
                 </div>
-              ))}
-            </div>
-          )}
-        </ImageUploading>
-      </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </ImageUploading>
     );
 
     if (!isLoaded) {
@@ -290,61 +288,60 @@ class Material extends React.Component {
           </div>
         </div>
 
-        <div className='properties-divs'>
-          <div>
-            {/* <fieldset style={{margin: '0px'}}> */}
-            <p>Properties</p>
+        <div className='container'>
+          <div className='left'>
+            <div className='properties-divs'>
+              <p>Properties</p>
 
-            <p>Dimensions</p>
-            <div>
-              <label htmlFor="width">Width</label>
-              <input name="width" value={this.state.width} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              <p>Dimensions</p>
+              <div>
+                <label htmlFor="width">Width</label>
+                <input name="width" value={this.state.width} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </div>
+
+              <div>
+                <label htmlFor="height">Height</label>
+                <input name="height" value={this.state.height} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </div>
+
+              <div>
+                <label htmlFor="length">Length</label>
+                <input name="length" value={this.state.length} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </div>
+
+              <div>
+                <label htmlFor="weight">Weight</label>
+                <input name="weight" value={this.state.weight} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </div>
+
+              <p>Quantity</p>
+              <div>
+                <label htmlFor="quantity">Quantity</label>
+                <input name="quantity" value={this.state.quantity} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </div>
             </div>
 
-            <div>
-              <label htmlFor="height">Height</label>
-              <input name="height" value={this.state.height} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-            </div>
+            <div className='costs-divs'>
+              <p>Costs</p>
+              <p>
+                <label htmlFor="addedOn">Added On</label>
+                <input name="addedOn" value={this.state.addedOn} disabled />
+              </p>
+              <p>
+                <label htmlFor="purchasedOn">Purchased On</label>
+                <input name="purchasedOn" value={this.state.purchasedOn} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </p>
 
-            <div>
-              <label htmlFor="length">Length</label>
-              <input name="length" value={this.state.length} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              <p>
+                <label htmlFor="cost">Cost Per Meter</label>
+                <input name="cost" value={this.state.cost} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+              </p>
             </div>
-
-            <div>
-              <label htmlFor="weight">Weight</label>
-              <input name="weight" value={this.state.weight} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-            </div>
-
-            <p>Quantity</p>
-            <div>
-              <label htmlFor="quantity">Quantity</label>
-              <input name="quantity" value={this.state.quantity} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-            </div>
-            {/* </fieldset> */}
           </div>
+
+          <ImagePanel />
         </div>
 
-        <ImagePanel />
-
-        <div className='costs-divs'>
-          <p>Costs</p>
-          <p>
-            <label htmlFor="addedOn">Added On</label>
-            <input name="addedOn" value={this.state.addedOn} disabled />
-          </p>
-          <p>
-            <label htmlFor="purchasedOn">Purchased On</label>
-            <input name="purchasedOn" value={this.state.purchasedOn} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-          </p>
-
-          <p>
-            <label htmlFor="cost">Cost Per Meter</label>
-            <input name="cost" value={this.state.cost} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-          </p>
-        </div>
-
-      
       </div>
     )
   }

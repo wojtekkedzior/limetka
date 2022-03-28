@@ -52,31 +52,51 @@ body {
   width: 500px
 }
 
-.properties-divs {
-  width: calc(50% - 32px);
-  display: inline-block;
+/* TODO: add precoressor */
+.border {
   border: 1px solid #C4C4C4;
-  border-radius: 8px;
-  margin: 20px 20px 20px 20px;
   background-color:  white;
+  border-radius: 8px;
+}
+
+.properties-divs {
+  border: 1px solid #C4C4C4;
+  background-color:  white;
+  border-radius: 8px;
+  padding-bottom: 20px;
+  margin: 20px 10px 20px 20px;
 }
 
 .image-div {
-  width: calc(50% - 32px);
-  display: inline-block;
-  margin: 20px;
-  background-color:  white;
-  margin: 20px 20px 20px 0px;
   border: 1px solid #C4C4C4;
+  background-color:  white;
   border-radius: 8px;
+  margin: 20px 20px 20px 10px;
 }
 
-.costs-divs {
-  width: calc(50% - 32px);
+.container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+/* .left {
+  width: 100%;
+  background-color:lightpink;
+} */
+
+.upload__image-wrapper {
   border: 1px solid #C4C4C4;
-  border-radius: 8px;
-  margin: 0px 20px 0px 20px;
   background-color:  white;
+  border-radius: 8px;
+  height: 92%;
+  margin: 20px 20px 20px 10px;
+} 
+
+.costs-divs {
+  border: 1px solid #C4C4C4;
+  background-color:  white;
+  border-radius: 8px;
+  margin: 0px 10px 20px 20px;
 }
 
 .home-page-divs {
