@@ -4,14 +4,16 @@
   }
 }
 
-@keyframes App-logo-spin {
+*/
+
+@keyframes heading-text {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-} */
+} 
 
 body {
   background-color: #F4F4F4; 
@@ -141,6 +143,7 @@ body {
   /* height: 42px; */
   /* left: 210px; */
   /* top: 29px; */
+  animation: heading-text 5s;
 
   /* Header 1 */
   font-family: 'Roboto';
