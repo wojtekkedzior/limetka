@@ -77,4 +77,12 @@ npm audit fix --force
 
 npm start
 
+npm install sass
+ npm uninstall sass-loader
+ npm install sass-loader --save-dev
+
+ npm uninstall sass-loader node-sass
+ npm install sass-loader node-sass --save-dev
+
+
 

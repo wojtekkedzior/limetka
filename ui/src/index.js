@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Header from './header';
 import Footer from './footer';
 
+import './App.scss';
+
 import { Switch, Route } from 'react-router-dom';
 import Material from './Material'
 import OverviewMaterials from './OverviewMaterials';

@@ -39,10 +39,8 @@ body {
 }
 
  .topbar-div {
-  border: 1px solid #C4C4C4;
-  border-radius: 8px;
+  @extend .border;
   margin: 0px 20px 0px 20px;
-  background-color:  white;
 } 
 
 #units-div {
@@ -60,17 +58,13 @@ body {
 }
 
 .properties-divs {
-  border: 1px solid #C4C4C4;
-  background-color:  white;
-  border-radius: 8px;
+  @extend .border;
   padding-bottom: 20px;
   margin: 20px 10px 20px 20px;
 }
 
 .image-div {
-  border: 1px solid #C4C4C4;
-  background-color:  white;
-  border-radius: 8px;
+  @extend .border;
   margin: 20px 20px 20px 10px;
 }
 
@@ -85,17 +79,13 @@ body {
 } */
 
 .upload__image-wrapper {
-  border: 1px solid #C4C4C4;
-  background-color:  white;
-  border-radius: 8px;
+  @extend .border;
   height: 92%;
   margin: 20px 20px 20px 10px;
 } 
 
 .costs-divs {
-  border: 1px solid #C4C4C4;
-  background-color:  white;
-  border-radius: 8px;
+  @extend .border;
   margin: 0px 10px 20px 20px;
 }
 
@@ -141,9 +131,7 @@ body {
 }
 
 .overview-content {
-   border: 1px solid #C4C4C4; 
-   border-radius: 4px;
-   background-color:  white;
+   @extend .border;
    margin: 20px 50px 20px 50px;
 }
 
