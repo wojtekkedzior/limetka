@@ -208,6 +208,7 @@ class Material extends React.Component {
             dragProps,
           }) => (
             <div className="upload__image-wrapper">
+              <p className='properties-title'>Fotografie</p>
               <button
                 style={isDragging ? { color: 'red' } : undefined}
                 onClick={onImageUpload}
@@ -243,13 +244,13 @@ class Material extends React.Component {
           {this.titleBar(this.getViewMode())}
 
           <div className="name-div">
-            <p>Name</p>
+            <p className='properties-title'>Name</p>
             <input name="name" value={this.state.name} select={this.state.name} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
           </div>
 
           <div id='units-div'>
             <div>
-              Unit
+              <p className='properties-sub-title'>Unit</p>
             </div>
             {/* TODO turn into sinlge choice multiselect */}
             <div>
@@ -290,51 +291,51 @@ class Material extends React.Component {
         <div className='container'>
           <div className='left'>
             <div className='properties-divs'>
-              <p>Properties</p>
+              <p className='properties-title'>Properties</p>
 
-              <p>Dimensions</p>
-                <div>
+              <p className='properties-sub-title'>Dimensions</p>
+                <div className='general-font '>
                   <label htmlFor="width">Width</label>
                   <input name="width" value={this.state.width} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
                 </div>
 
-                <div>
+                <div className='general-font '>
                   <label htmlFor="height">Height</label>
                   <input name="height" value={this.state.height} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
                 </div>
 
-                <div>
+                <div className='general-font '> 
                   <label htmlFor="length">Length</label>
                   <input name="length" value={this.state.length} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
                 </div>
 
-                <div>
+                <div className='general-font '>
                   <label htmlFor="weight">Weight</label>
                   <input name="weight" value={this.state.weight} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
                 </div>
 
-                <p>Quantity</p>
-                <div>
+              <p className='properties-sub-title'>Quantity</p>
+                <div className='general-font '>
                   <label htmlFor="quantity">Quantity</label>
                   <input name="quantity" value={this.state.quantity} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
                 </div>
             </div>
 
             <div className='costs-divs'>
-              <p>Costs</p>
-              <p>
+              <p className='properties-title'>Costs</p>
+              <div className='general-font '>
                 <label htmlFor="addedOn">Added On</label>
                 <input name="addedOn" value={this.state.addedOn} disabled />
-              </p>
-              <p>
+              </div>
+              <div className='general-font '>
                 <label htmlFor="purchasedOn">Purchased On</label>
                 <input name="purchasedOn" value={this.state.purchasedOn} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-              </p>
+              </div>
 
-              <p>
+              <div className='general-font '>
                 <label htmlFor="cost">Cost Per Meter</label>
                 <input name="cost" value={this.state.cost} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
-              </p>
+              </div>
             </div>
           </div>
 
