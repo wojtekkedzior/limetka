@@ -137,29 +137,29 @@ class Material extends React.Component {
 
   titleBar(name) {
     return (<div className="wrapper">
-      <div className='name-div'>
-        <label>{name}</label>
+      <div className='page-type'>
+        <label className='page-type-label'>{name}</label>
       </div>
 
-      <div>
+      <div className='navigation-buttons-div'>
         {this.mode === "view" &&
           <>
-            <button type="button" onClick={event => window.location.href = '/material/edit/' + this.id}>Edit</button>
-            <button type="button" onClick={() => this.back()}>Back</button>
+            <button style={{float: 'right'}} type="button" onClick={event => window.location.href = '/material/edit/' + this.id}>Edit</button>
+            <button style={{float: 'right'}} type="button" onClick={() => this.back()}>Back</button>
           </>
         }
 
         {this.mode === "add" &&
           <>
-            <button type="button" onClick={() => this.save()}>Save</button>
-            <button type="button" onClick={() => this.back()}>Back</button>
+            <button style={{float: 'right'}} type="button" onClick={() => this.save()}>Save</button>
+            <button style={{float: 'right'}} type="button" onClick={() => this.back()}>Back</button>
           </>
         }
 
         {this.mode === "edit" &&
           <>
-            <button type="button" onClick={() => this.save()}>Save</button>
-            <button type="button" onClick={() => this.back()}>Back</button>
+            <button style={{float: 'right'}} type="button" onClick={() => this.save()}>Save</button>
+            <button style={{float: 'right'}} type="button" onClick={() => this.back()}>Back</button>
           </>
         }
       </div>
@@ -242,20 +242,20 @@ class Material extends React.Component {
       <div className="content">
         <div className='topbar-div'>
           {this.titleBar(this.getViewMode())}
-
           <div className="name-div">
-            <p className='properties-title'>Name</p>
-            <input name="name" value={this.state.name} select={this.state.name} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
+            <label className='name-label'>Name</label>
+            <input name="name" value={this.state.name} select={this.state.name} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""} name-input`} />
           </div>
 
+          
           <div id='units-div'>
-            <div>
-              <p className='properties-sub-title'>Unit</p>
+            <div style={{width: '100%', height: '50px' }}>
+              <p className='properties-sub-title units-label'>Unit</p>
             </div>
             {/* TODO turn into sinlge choice multiselect */}
-            <div>
-              <label htmlFor="materialType">Material Type</label>
-              <select name="materialType" id="materialType" value={this.state.materialType} onChange={handleType} disabled={this.disabled()}>
+            <div style={{width: '100%', height: '50px'}}>
+              <label style={{float: 'left' , width: '30%', 'text-align': 'left'}} htmlFor="materialType">Material Type</label>
+              <select style={{float: 'left', width: '70%'}} name="materialType" id="materialType" value={this.state.materialType} onChange={handleType} disabled={this.disabled()}>
                 <option value=""></option>
                 {this.state.types.map((t =>
                   <option value={t.name} key={t.id}>{t.name}</option>
@@ -263,7 +263,7 @@ class Material extends React.Component {
               </select>
             </div>
             {/* this.setState({ errorMessage: error.toString() }); */}
-            <div>
+            <div >
               <Multiselect disable={this.disabled()}
                 options={this.state.themes}
                 selectedValues={this.state.selectedThemes}
@@ -285,7 +285,8 @@ class Material extends React.Component {
               />
             </div>
 
-          </div>
+            </div>  
+
         </div>
 
         <div className='container'>
