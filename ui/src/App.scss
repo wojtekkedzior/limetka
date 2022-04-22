@@ -26,14 +26,14 @@ body {
   border: none;
 }
 
-.content-divs {
-  float: left;
-}
+// .content-divs {
+//   float: left;
+// }
 
-.divs {
-  clear: none;
-  display: inline-block;
-}
+// .divs {
+//   clear: none;
+//   display: inline-block;
+// }
 
 .wrapper {
   // display: inline-block;
@@ -54,31 +54,11 @@ body {
   float: left;
 }
 
-.page-type-label {
-  float: left;
-  width: 200px;
-  height: 50px;
 
-  border-top-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  background-color: #A2A521;
-}
 
 .navigation-buttons-div {
   width: 50%;
   float: right;
-}
-
-.name-label {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 28px;
-  color: #B4B725;
-  // width: 100%;
-  float: left;
-  margin: 0px 20px 0px 20px;
 }
 
 .name-input {
@@ -103,13 +83,6 @@ body {
   width: calc(50% - 6px);
 }
 
-.units-label {
-  width: 100%;
-  text-align: left;
-  float: left;
-
-}
-
 .border {
   border: 1px solid #C4C4C4;
   background-color: white;
@@ -130,6 +103,7 @@ body {
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  width: 100%;
 }
 
 /* .left {
@@ -203,39 +177,61 @@ body {
   color: #4F4F4D;
 }
 
-.properties-title {
-  font-family: 'Roboto';
-  font-style: normal;
+.titles-font {
+  @extend .general-font;
   font-weight: 500;
   font-size: 24px;
   line-height: 28px;
+  text-align: left;
+  // padding: 10px;
+  margin: 10px;
+  float: left;
+  width: 100%;
+}
+
+.properties-title {
+  @extend .titles-font;
   color: #B4B725;
 }
 
 .properties-sub-title {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  @extend .titles-font;
   font-size: 18px;
   line-height: 21px;
   color: #4F4F4D;
 }
 
+.page-type-label {
+  float: left;
+
+  width: 244px;
+  height: 35px;
+  left: 36px;
+  top: 30px;
+
+  border-top-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #A2A521;
+
+  @extend .general-font;
+  font-size: 30px;
+  line-height: 35px;
+  color: #FFFFFF;
+}
 
 .heading-text {
   position: absolute;
-  /* width: 319px; */
-  /* height: 42px; */
-  /* left: 210px; */
-  /* top: 29px; */
+  //  width: 319px; 
+  //  height: 42px; 
+  // left: 210px; 
+  //  top: 29px; 
   animation: heading-text 5s;
 
   /* Header 1 */
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 500;
+  @extend .titles-font;
   font-size: 36px;
   line-height: 42px;
+  width: 120px;
 
   color: #FFFFFF;
 }
@@ -244,12 +240,12 @@ body {
   position: absolute;
 
   /* Text regular */
-  font-family: 'Roboto';
-  font-style: normal;
+  @extend .titles-font;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
   color: #FFFFFF;
+  width: 120px;
 }
 
 .title-bar {
@@ -274,7 +270,6 @@ body {
   border-radius: 4px;
   padding: 10px;
   margin: 10px;
-
 }
 
 .filters-div {

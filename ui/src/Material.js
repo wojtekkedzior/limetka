@@ -243,14 +243,14 @@ class Material extends React.Component {
         <div className='topbar-div'>
           {this.titleBar(this.getViewMode())}
           <div className="name-div">
-            <label className='name-label'>Name</label>
+            <label className='properties-title'>Name</label>
             <input name="name" value={this.state.name} select={this.state.name} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""} name-input`} />
           </div>
 
           
           <div id='units-div'>
             <div style={{width: '100%', height: '50px' }}>
-              <p className='properties-sub-title units-label'>Unit</p>
+              <p className='properties-sub-title'>Unit</p>
             </div>
             {/* TODO turn into sinlge choice multiselect */}
             <div style={{width: '100%', height: '50px'}}>
@@ -294,7 +294,7 @@ class Material extends React.Component {
             <div className='properties-divs'>
               <p className='properties-title'>Properties</p>
 
-              <p className='properties-sub-title'>Dimensions</p>
+              <p className='properties-sub-title '>Dimensions</p>
                 <div className='general-font '>
                   <label htmlFor="width">Width</label>
                   <input name="width" value={this.state.width} onChange={handleType} className={`${this.mode === "view" ? "viewmode" : ""}`} />
